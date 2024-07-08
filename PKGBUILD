@@ -18,7 +18,7 @@ prepare() {
     cd ${srcdir}/$_pkgbase-dkms
 	for patch in $(cat debian/patches/series)
 	do
-	patch -p1 -i debian/patches/$patch
+	patch -p1 -N -i debian/patches/$patch || true
 	done
 }
 
