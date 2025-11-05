@@ -14,8 +14,8 @@ source=(git+$url dkms.conf)
 sha256sums=('SKIP'
             'SKIP')
 depends=('dkms' 'python' 'bc')
-_headers=('linux-aarch64-rockchip-bsp5.10-radxa-git-headers')
-mekdepends=$_headers
+makedepends=('linux-aarch64-rockchip-bsp5.10-radxa-git-headers')
+
 
 _switchtag(){
   _tag=$(git tag -l --sort=creatordate | tail -1)
@@ -47,7 +47,7 @@ check(){
   cd $_srcname
   _tag=$(_switchtag)
 
-  for _kernel in ${_headers[@]}; do
+  for _kernel in ${makedepends[@]}; do
     mkdir -p $srcdir/test_dkms
     rm -rf $srcdir/test_dkms/*
   
